@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>게시판 타임어택</title>
+</head>
+<body>
+    {% if login == False %}
+    <form action="/login" method="post">
+    <div class="login">
+        <div class="id">
+            <div class="id_input">
+                아이디<input type="text" class="_id" name="_id">
+            </div>
+        </div>
+        <div class="pwd">
+            <div class="pwd_input">
+                비밀번호<input type="text" class="_pwd" name="_pwd">
+            </div>
+        </div>
+        <div><a href="/signup">가입하기</a></div>
+        <div class="submit">
+            <input type="submit" value="로그인">
+        </div>
+    </div>
+</form>
+{% endif %}
+
+{% if login == True %}
+<nav class="nav">
+<span>{{username}}님 환영합니다.</span><a href="/logout"><span>로그아웃</span></a>
+</nav>
+
+
+<div class="bbs_write">
+    <form action="/write" method="post">
+    <div><input type="text" placeholder="제목" name="_subject" id=""></div>
+<div><textarea placeholder="내용" name="_desc" id="" cols="30" rows="10"></textarea></div>
+<div><input type="submit" value="작성"></div>
+</form>
+</div>
+
+<table class="table">
+    <tr>
+    <th>번호</th>
+    <th>제목</th>
+    <th>작성자</th>
+    <th>날짜</th>
+</tr>
+{% for i in all_db %}
+<tr>
+<td>{{i.num}}</td>
+<td>{{i.subject}}</td>
+<td>{{username}}</td>
+<td>{{i.day}}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+
+
+
+
+
+
+
+{% endif %}
+</body>
+</html>
