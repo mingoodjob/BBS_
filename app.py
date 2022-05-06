@@ -6,9 +6,6 @@ from datetime import datetime
 
 now = datetime.now()
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.avef3.mongodb.net/Cluster0?retryWrites=true&w=majority',tlsCAFile=certifi.where())
-db = client.testdbda
-
 app = Flask(__name__)
 
 app.secret_key = 'lovelovelovelovelovelovelovelo'
